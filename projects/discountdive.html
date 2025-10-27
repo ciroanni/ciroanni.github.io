@@ -1,111 +1,102 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Discount Dive — Ciro Annicchiarico</title>
+    <meta name="description" content="Discount Dive — cooperative physics-based gameplay prototype with active ragdolls. Trailer, pitch and prototype details." />
+    <link rel="canonical" href="https://ciroanni.github.io/projects/discountdive.html" />
 
-    <title>Discount Dive</title>
-    <meta content name="descriptison">
-    <meta content name="keywords">
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
 
-    <!-- Favicons -->
-    <link href="../assets/img/favicon.png" rel="icon">
-    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet">
-    <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css"
-      rel="stylesheet">
-    <link href="../assets/vendor/boxicons/css/boxicons.min.css"
-      rel="stylesheet">
-    <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="../assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
-    * Template Name: Personal - v2.2.0
-    * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
-  </head>
-
-  <body data-gr-c-s-loaded="true">
-
-    <!-- ======= Portfolio Details ======= -->
-    <main id="main">
-      <div id="portfolio-details" class="portfolio-details">
-        <div class="container">
-
-          <div class="row">
-
-            <div class="col-lg-12 portfolio-info">
-              <br>
-              <h2 style="color:#12d640">Discount Dive</h2>
-              <ul>
-                <li><strong>Keywords</strong>: Unity, C#, 3D Modelling, Computer
-                  Animation</li>
-                <li><a
-                    href="https://github.com/Project-Discount-Dive/Discount-Dive-Prototypes"
-                    target="_blank">GitHub</a></li>
-                <li><a
-                    href="https://youtu.be/1aMLxafhyUE"
-                    target="_blank">Trailer</a></li>
-                <li><a
-                    href="https://docs.google.com/presentation/d/1tNtG-s0eMlzNLTMLFtCBqKuRwbw2v23Z/edit?usp=sharing&ouid=118165692359472307741&rtpof=true&sd=true"
-                    target="_blank">Pitch Document</a></li>
-              </ul>
-
-              <p>
-                Cooperative physics-based gameplay with active ragdolls.
-              </p>
-              <p>
-                The project was realized as part of the game design course at
-                the Polytechnic of Turin, whose objective was to simulate the
-                presentation of a video game prototype to a publisher. The
-                course involved the creation of all the necessary elements,
-                including a trailer, a pitch document and a working prototype.
-                Within the group of 6 people, my contribution covered various
-                aspects: I dealt with 3D modelling, teaser trailer animation, QA
-                and, above all, programming, with a specific focus on character
-                physics and the combat system. 
-              </p>
-              <div class="embed-responsive embed-responsive-16by9 mt-3">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1aMLxafhyUE" allowfullscreen title="Discount Dive YouTube Video"></iframe>
+    <!-- Minimal fallback styles so page looks reasonable if project CSS is missing -->
+    <style>
+        :root{--accent:#0a66c2;--bg:#fff;--muted:#666;--max:980px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+        *{box-sizing:border-box}
+        body{margin:0;background:var(--bg);color:#111;font-family:var(--font,Inter),sans-serif;line-height:1.5}
+        .site{max-width:var(--max);margin:28px auto;padding:20px}
+        header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+        header a.logo{font-weight:700;color:var(--accent);text-decoration:none;font-size:1.05rem}
+        nav a{margin-left:12px;color:var(--muted);text-decoration:none;font-size:0.95rem}
+        .hero{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
+        .meta{color:var(--muted);font-size:0.95rem}
+        .content{display:grid;grid-template-columns:1fr;gap:20px}
+        .card{background:#fafafa;border:1px solid #eee;padding:18px;border-radius:8px}
+        .actions{display:flex;gap:10px;flex-wrap:wrap}
+        .btn{display:inline-block;padding:10px 14px;border-radius:6px;text-decoration:none;font-weight:600}
+        .btn-primary{background:var(--accent);color:white}
+        .btn-out{background:transparent;border:1px solid #ddd;color:var(--accent)}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+        figure{margin:0}
+        img{max-width:100%;border-radius:6px;display:block}
+        h1{margin:0;font-size:1.45rem}
+        h2{margin:0 0 8px 0;font-size:1.05rem}
+        p.lead{margin:0;color:var(--muted)}
+        footer{margin-top:28px;color:var(--muted);font-size:0.9rem;text-align:center}
+        @media(min-width:720px){ .hero{grid-template-columns:1fr 320px} }
+    </style>
+</head>
+<body>
+    <div class="site">
+        <main>
+            <section class="hero">
+                <div>
+                    <h1 style="color:var(--accent)">Discount Dive</h1>
+                    <p class="lead">Cooperative physics-based game prototype featuring active ragdolls.</p>
                 </div>
 
-            </div>
+                <aside class="card">
+                    <h2>Quick links</h2>
+                    <div class="actions" style="margin-top:10px">
+                        <a class="btn btn-out" href="https://github.com/Project-Discount-Dive/Discount-Dive-Prototypes" target="_blank" rel="noopener">GitHub</a>
+                        <a class="btn btn-out" href="https://youtu.be/1aMLxafhyUE" target="_blank" rel="noopener">Trailer</a>
+                        <a class="btn btn-out" href="https://docs.google.com/presentation/d/1tNtG-s0eMlzNLTMLFtCBqKuRwbw2v23Z/edit?usp=sharing&ouid=118165692359472307741&rtpof=true&sd=true" target="_blank" rel="noopener">Pitch</a>
+                    </div>
 
-          </div>
+                    <dl style="margin-top:12px;color:var(--muted);font-size:0.95rem">
+                        <dt style="font-weight:600">Keywords</dt>
+                        <dd style="margin:6px 0">Unity, C#, 3D Modelling, Computer Animation</dd>
+                    </dl>
+                </aside>
+            </section>
 
-        </div>
-      </div><!-- End Portfolio Details -->
-    </main><!-- End #main -->
+            <section id="details" class="content">
+                <div class="card">
+                    <h2>Overview</h2>
+                    <p>Discount Dive is a cooperative game prototype created as part of a course project simulating a publisher pitch. The experience focuses on physics-driven character interactions using active ragdolls, promoting frantic, emergent co-op gameplay. The project deliverables included a playable prototype, trailer and a pitch document.</p>
 
-    <!-- Vendor JS Files -->
-    <script async src="//www.google-analytics.com/analytics.js"></script><script
-      src="assets/vendor/jquery/jquery.min.js"></script>
-    <script
-      src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="../assets/vendor/php-email-form/validate.js"></script>
-    <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="../assets/vendor/counterup/counterup.min.js"></script>
-    <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="../assets/vendor/venobox/venobox.min.js"></script>
+                    <figure style="margin-top:12px">
+                        <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px">
+                            <iframe src="https://www.youtube.com/embed/1aMLxafhyUE" title="Discount Dive Trailer" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+                        </div>
+                        <figcaption style="font-size:0.9rem;color:var(--muted);margin-top:6px">Trailer — Discount Dive (team project)</figcaption>
+                    </figure>
+                </div>
 
-    <!-- Template Main JS File -->
-    <script src="../assets/js/main.js"></script>
+                <div class="grid">
+                    <div class="card">
+                        <h2>Implementation</h2>
+                        <p>Prototype built in Unity with custom active ragdoll controllers and physics-driven combat. Emphasis was placed on responsive feel and predictable chaos for cooperative play. Additional contributions include 3D modelling and trailer animation.</p>
+                    </div>
 
-    <script>if( window.self == window.top ) { (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55234356-4', 'auto'); ga('send', 'pageview'); } </script>
+                    <div class="card">
+                        <h2>Role & Contributions</h2>
+                        <p class="meta">Programming • Modelling • QA</p>
+                        <p>Worked on character physics, combat systems, QA and several modelling/animation tasks. Coordinated with teammates to integrate scenes for the trailer and prepared the pitch materials presented to the course 'publisher'.</p>
+                    </div>
 
-  </body>
+                    <div class="card">
+                        <h2>Notes</h2>
+                        <p>Course project developed by a team of six. Source code and assets are linked in the repository. The prototype demonstrates systems for cooperative, physics-first gameplay that can be expanded into larger prototypes.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <small>© Ciro Annicchiarico — <a href="../index.html">ciroanni.github.io</a></small>
+        </footer>
+    </div>
+</body>
 </html>

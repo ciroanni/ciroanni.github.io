@@ -1,103 +1,102 @@
-<html lang="en"><head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI Kingdom — Ciro Annicchiarico</title>
+    <meta name="description" content="AI Kingdom — a tiny fantasy sandbox that evolves via a language-model-driven cellular automaton." />
+    <link rel="canonical" href="https://ciroanni.github.io/projects/aikingdom.html" />
 
-    <title>AI Kingdom</title>
-    <meta content name="descriptison">
-    <meta content name="keywords">
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
 
-    <!-- Favicons -->
-    <link href="../assets/img/favicon.png" rel="icon">
-    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Minimal fallback styles so page looks reasonable if project CSS is missing -->
+    <style>
+        :root{--accent:#0a66c2;--bg:#fff;--muted:#666;--max:980px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+        *{box-sizing:border-box}
+        body{margin:0;background:var(--bg);color:#111;font-family:var(--font,Inter),sans-serif;line-height:1.5}
+        .site{max-width:var(--max);margin:28px auto;padding:20px}
+        header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+        header a.logo{font-weight:700;color:var(--accent);text-decoration:none;font-size:1.05rem}
+        nav a{margin-left:12px;color:var(--muted);text-decoration:none;font-size:0.95rem}
+        .hero{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
+        .meta{color:var(--muted);font-size:0.95rem}
+        .content{display:grid;grid-template-columns:1fr;gap:20px}
+        .card{background:#fafafa;border:1px solid #eee;padding:18px;border-radius:8px}
+        .actions{display:flex;gap:10px;flex-wrap:wrap}
+        .btn{display:inline-block;padding:10px 14px;border-radius:6px;text-decoration:none;font-weight:600}
+        .btn-primary{background:var(--accent);color:white}
+        .btn-out{background:transparent;border:1px solid #ddd;color:var(--accent)}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+        figure{margin:0}
+        img{max-width:100%;border-radius:6px;display:block}
+        h1{margin:0;font-size:1.45rem}
+        h2{margin:0 0 8px 0;font-size:1.05rem}
+        p.lead{margin:0;color:var(--muted)}
+        footer{margin-top:28px;color:var(--muted);font-size:0.9rem;text-align:center}
+        @media(min-width:720px){ .hero{grid-template-columns:1fr 320px} }
+    </style>
+</head>
+<body>
+    <div class="site">
+        <main>
+            <section class="hero">
+                <div>
+                    <h1 style="color:var(--accent)">AI Kingdom</h1>
+                    <p class="lead">A tiny fantasy sandbox where the world evolves one cell at a time using a language-model-driven cellular automaton.</p>
+                    <div class="meta" style="margin-top:10px">
+                        <span>2-day game jam, Malmö (International Summer School on AI & Games)</span>
+                    </div>
+                </div>
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-      rel="stylesheet">
+                <aside class="card">
+                    <h2>Quick links</h2>
+                    <div class="actions" style="margin-top:10px">
+                        <a class="btn btn-out" href="https://github.com/GameAISchool2025members/AIKingdoms" target="_blank" rel="noopener">Code</a>
+                    </div>
 
-    <!-- Vendor CSS Files -->
-    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet">
-    <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css"
-      rel="stylesheet">
-    <link href="../assets/vendor/boxicons/css/boxicons.min.css"
-      rel="stylesheet">
-    <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+                    <dl style="margin-top:12px;color:var(--muted);font-size:0.95rem">
+                        <dt style="font-weight:600">Keywords</dt>
+                        <dd style="margin:6px 0">Unity, C#, AI, LLM, Cellular Automata</dd>
+                    </dl>
+                </aside>
+            </section>
 
-    <!-- Template Main CSS File -->
-    <link href="../assets/css/style.css" rel="stylesheet">
+            <section id="details" class="content">
+                <div class="card">
+                    <h2>Overview</h2>
+                    <p>AI Kingdom is a small, whimsical simulation inspired by SimCity and created during a two-day game jam. Gameplay unfolds on a compact 5×5 grid that evolves turn by turn via a cellular automaton. Instead of fixed rule sets, each tile's update is produced by a language model that describes the tile's next state, enabling emergent and narrative-rich world evolution. Players shape the land by placing tiles and writing prompts that guide the AI-driven updates.</p>
 
-    <!-- =======================================================
-    * Template Name: Personal - v2.2.0
-    * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
-  </head>
+                    <figure style="margin-top:12px">
+                        <img src="../assets/img/project/aikingdom.png" alt="AI Kingdom screenshot">
+                        <figcaption style="font-size:0.9rem;color:var(--muted);margin-top:6px">Screenshot — AI Kingdom (game jam prototype)</figcaption>
+                    </figure>
+                </div>
 
-  <body data-gr-c-s-loaded="true">
+                <div class="grid">
+                    <div class="card">
+                        <h2>Design & Mechanics</h2>
+                        <p class="meta">Grid • Turns • AI updates</p>
+                        <p>The game runs on a 5×5 grid. Each turn, tiles are evaluated and updated via prompts sent to a language model; the model's textual outputs determine tile transformations, producing a playful narrative-driven simulation rather than deterministic rules.</p>
+                    </div>
 
-    <!-- ======= Portfolio Details ======= -->
-    <main id="main">
-      <div id="portfolio-details" class="portfolio-details">
-        <div class="container">
+                    <div class="card">
+                        <h2>Implementation</h2>
+                        <p class="meta">Unity • C# • LLM</p>
+                        <p>The prototype was built in Unity using C#. A lightweight integration with a language-model backend drives tile updates.</p>
+                    </div>
 
-          <div class="row">
+                    <div class="card">
+                        <h2>Notes</h2>
+                        <p>This project is a prototype from a short game jam and demonstrates an exploratory approach to combining LLMs with game systems. Source code and materials are available on the project's GitHub repository linked above.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-            <div class="col-lg-12 portfolio-info">
-              <br>
-              <h2 style="color:#12d640">AI Kingdom</h2>
-              <ul>
-                <li><strong>Keywords</strong>: Unity, C#, AI, LLM, Cellular
-                  Automata</li>
-                <li><a
-                    href="https://github.com/GameAISchool2025members/AIKingdoms"
-                    target="_blank">GitHub</a></li>
-              </ul>
-
-              <p>
-                AI Kingdom is a tiny fantasy sandbox where you shape the world,
-                one cell at a time.
-              </p>
-              <p>
-                Developed this game during an intensive 2-day game jam as part
-                of the 7th International Summer School on Artificial
-                Intelligence and Games, held in Malmö.
-                Inspired by SimCity, but set in a whimsical medieval realm, AI
-                Kingdom plays out on a cozy 5×5 grid that evolves turn by turn
-                using a cellular automata. The twist? Each tile is updated by an
-                AI language model, not hardcoded rules. You’re not just placing
-                buildings, you're writing the story of the land.
-              </p>
-              <img src="../assets/img/project/aikingdom.png"
-                alt="AI Kingdom Project Screenshot" class="img-fluid mt-3">
-            </div>
-
-          </div>
-
-        </div>
-      </div><!-- End Portfolio Details -->
-    </main><!-- End #main -->
-
-    <!-- Vendor JS Files -->
-    <script async src="//www.google-analytics.com/analytics.js"></script><script
-      src="assets/vendor/jquery/jquery.min.js"></script>
-    <script
-      src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="../assets/vendor/php-email-form/validate.js"></script>
-    <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="../assets/vendor/counterup/counterup.min.js"></script>
-    <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="../assets/vendor/venobox/venobox.min.js"></script>
-
-    <!-- Template Main JS File -->
-    <script src="../assets/js/main.js"></script>
-
-    <script>if( window.self == window.top ) { (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-55234356-4', 'auto'); ga('send', 'pageview'); } </script>
-
-  </body>
+        <footer>
+            <small>© Ciro Annicchiarico — <a href="../index.html">ciroanni.github.io</a></small>
+        </footer>
+    </div>
+</body>
 </html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Master Thesis — Ciro Anni</title>
+    <meta name="description" content="Master thesis project — overview, methodology, results and downloadable PDF." />
+    <link rel="canonical"
+    href="https://ciroanni.github.io/projects/masterthesis.html" />
+
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+
+    <!-- Minimal fallback styles so page looks reasonable if project CSS is missing -->
+    <style>
+        :root{--accent:#0a66c2;--bg:#fff;--muted:#666;--max:980px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;}
+        *{box-sizing:border-box}
+        body{margin:0;background:var(--bg);color:#111;font-family:var(--font,Inter),sans-serif;line-height:1.5}
+        .site{max-width:var(--max);margin:28px auto;padding:20px}
+        header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+        header a.logo{font-weight:700;color:var(--accent);text-decoration:none;font-size:1.05rem}
+        nav a{margin-left:12px;color:var(--muted);text-decoration:none;font-size:0.95rem}
+        .hero{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:20px}
+        .meta{color:var(--muted);font-size:0.95rem}
+        .content{display:grid;grid-template-columns:1fr;gap:20px}
+        .card{background:#fafafa;border:1px solid #eee;padding:18px;border-radius:8px}
+        .actions{display:flex;gap:10px;flex-wrap:wrap}
+        .btn{display:inline-block;padding:10px 14px;border-radius:6px;text-decoration:none;font-weight:600}
+        .btn-primary{background:var(--accent);color:white}
+        .btn-out{background:transparent;border:1px solid #ddd;color:var(--accent)}
+        .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+        figure{margin:0}
+        img{max-width:100%;border-radius:6px;display:block}
+        h1{margin:0;font-size:1.45rem}
+        h2{margin:0 0 8px 0;font-size:1.05rem}
+        p.lead{margin:0;color:var(--muted)}
+        footer{margin-top:28px;color:var(--muted);font-size:0.9rem;text-align:center}
+        @media(min-width:720px){ .hero{grid-template-columns:1fr 320px} }
+    </style>
+</head>
+<body>
+    <div class="site">
+        <main>
+            <section class="hero">
+                <div>
+                    <h1>Animating Virtual Characters in Unity Using Generative
+                    AI: A Prompt-Based Approach (Master Thesis) </h1>
+                    <p class="lead">A prompt-based framework for generating and animating virtual characters in Unity using generative AI and diffusion models for text-to-motion synthesis.</p>
+                    <div class="meta" style="margin-top:10px">
+                        <span>Author: Ciro Annicchiarico</span> ·
+                        <span>Supervisor: Prof. Andrea Bottino, Prof. Francesco
+                        Strada, Dott. Stefano Calzolari</span> ·
+                        <span>Year: 2025</span>
+                    </div>
+                </div>
+
+                <aside class="card">
+                    <h2>Quick links</h2>
+                    <div class="actions" style="margin-top:10px">
+                        <a class="btn btn-primary" href="https://webthesis.biblio.polito.it/secure/35302/1/tesi.pdf" download>Download PDF</a>
+                        <a class="btn btn-out" href="#details">Read details</a>
+                        <a class="btn btn-out" href="https://github.com/ciroanni/masterthesis" target="_blank" rel="noopener">Code</a>
+                    </div>
+
+                    <dl style="margin-top:12px;color:var(--muted);font-size:0.95rem">
+                        <dt style="font-weight:600">Keywords</dt>
+                        <dd style="margin:6px 0">Text-to-motion, generative AI,
+                        Virtual human</dd>
+                    </dl>
+                </aside>
+            </section>
+
+            <section id="details" class="content">
+                <div class="card">
+                    <h2>Abstract</h2>
+                    <p>Creating realistic and expressive character animations is a major challenge in video game development and interactive applications. Traditional methods, such as keyframing and motion capture, demand considerable time and resources. Recently, AI-driven text-to-motion models, especially diffusion models, have emerged as a promising alternative, allowing for the automatic creation of animations from textual descriptions. This thesis offers a comparative analysis of different motion generation models, focusing primarily on diffusion-based techniques. The evaluation examines crucial factors like motion quality, realism, adherence to prompts, and usability in real-time applications. To connect AI-generated animations with game engines, a specialized tool was developed to enable the seamless integration of these models into Unity, providing a practical workflow for developers. In addition to technical evaluation, this work explores whether text-to-motion models can effectively express emotions through movement. By drawing on insights from body language research, a structured approach was created to enhance motion prompts for generating emotionally expressive animations. An experiment was conducted where participants identified emotions in AI-generated animations. The responses were analyzed to evaluate the strengths and weaknesses of these models in producing believable emotional expressions. Finally, this thesis points out significant limitations of diffusion-based motion generation, such as the quality and diversity of training datasets, which greatly affect the expressiveness and generalization of the generated animations. The study concludes with suggestions for future research directions and improvements to enhance the adaptability and quality of AI-generated animations for upcoming applications in gaming and interactive media.</p>
+                </div>
+
+                <div class="grid">
+                    <div class="card">
+                        <h2>Methodology</h2>
+                        <p>The thesis implements and benchmarks several
+                        text-to-motion diffusion models (MoMask, MDM, T2M-GPT,
+                        CondMDI) using Python and PyTorch, integrating them into
+                        a Unity pipeline via ZeroMQ for in-editor animation
+                        generation; key design choices include standardizing
+                        motion output to BVH format, applying inverse kinematics
+                        for retargeting, and using consistent prompt-based
+                        evaluation for model comparison.
+</p>
+                    </div>
+
+                    <div class="card">
+                        <h2>Results</h2>
+                        <p>The Unity implementation allows users to generate
+                        character animations from textual prompts directly
+                        within the editor, using a Python backend connected via
+                        ZeroMQ. The system supports multiple generative models,
+                        enabling comparison of their outputs within Unity. While
+                        all models successfully produce motion from text,
+                        diffusion-based ones generate smoother and more
+                        realistic animations, making them better suited for
+                        high-quality content creation.
+</p>
+                    </div>
+
+                    <div class="card">
+                        <h2>Conclusion & Future Work</h2>
+                        <p>The conclusions highlight that while current text-to-motion models can generate realistic animations, they still face limitations in emotional expressiveness, fine-grained control, physics realism, and prompt adherence. Future work should focus on improving real-time performance for interactive applications, developing built-in solutions compatible with game engine workflows, and extending model capabilities to handle human–object interactions and multi-character animations with greater contextual awareness and realism.
+</p>
+                    </div>
+                </div>
+
+                <!-- <div id="gallery" class="card" style="margin-top:18px">
+                    <h2>Figures</h2>
+                    <p class="meta">Click images to view full size</p>
+                    <div class="grid" style="margin-top:10px">
+                        <figure>
+                            <a href="../assets/images/fig1.png" target="_blank" rel="noopener">
+                                <img src="../assets/images/fig1-thumb.png" alt="Figure 1 — caption">
+                            </a>
+                            <figcaption style="font-size:0.9rem;color:var(--muted);margin-top:6px">Figure 1 — caption</figcaption>
+                        </figure>
+                        <figure>
+                            <a href="../assets/images/fig2.png" target="_blank" rel="noopener">
+                                <img src="../assets/images/fig2-thumb.png" alt="Figure 2 — caption">
+                            </a>
+                            <figcaption style="font-size:0.9rem;color:var(--muted);margin-top:6px">Figure 2 — caption</figcaption>
+                        </figure>
+                        <figure>
+                            <a href="../assets/images/fig3.png" target="_blank" rel="noopener">
+                                <img src="../assets/images/fig3-thumb.png" alt="Figure 3 — caption">
+                            </a>
+                            <figcaption style="font-size:0.9rem;color:var(--muted);margin-top:6px">Figure 3 — caption</figcaption>
+                        </figure>
+                    </div>
+                </div> -->
+            </section>
+        </main>
+
+        <footer>
+            <small>© Ciro Annicchiarico — <a href="../index.html">ciroanni.github.io</a></small>
+        </footer>
+    </div>
+</body>
+</html></a></div>
+    <!-- Prefer site stylesheet when present -->
