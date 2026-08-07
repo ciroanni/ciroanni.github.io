@@ -25,7 +25,7 @@ jobs:
       - name: Copy PDF to stable website path
         run: |
           mkdir -p assets/docs
-          cp resume/resume.pdf assets/docs/resume.pdf
+          cp resume.pdf assets/docs/resume.pdf
 
       - name: Validate generated artifact
         run: |
