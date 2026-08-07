@@ -1,0 +1,446 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage[explicit]{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 79, 144} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Ciro Annicchiarico's CV},
+    pdfauthor={Ciro Annicchiarico},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage[default, type1]{sourcesanspro} 
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\makeatletter
+\let\ps@customFooterStyle\ps@plain % Copy the plain style to customFooterStyle
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Ciro Annicchiarico - Page \thepage{} of \pageref*{LastPage}}
+}{}{} % replace number by desired string
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{
+    % avoid page braking right after the section title
+    \needspace{4\baselineskip}
+    % make the font size of the section title large and color it with the primary color
+    \Large\color{primaryColor}
+}{
+}{
+}{
+    % print bold title, give 0.15 cm space and draw a line of 0.8 pt thickness
+    % from the end of the title to the end of the body
+    \textbf{#1}\hspace{0.15cm}\titlerule[0.8pt]\hspace{-0.1cm}
+}[] % section title formatting
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+% \renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{1 cm, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\color{primaryColor}\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in July 2026}\hspace{\widthof{Last updated in July 2026}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \fontsize{30 pt}{30 pt}
+        \textbf{Ciro Annicchiarico}
+        \vspace{0.3 cm}
+        \normalsize
+        \\AI ENGINEER
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{{\footnotesize\faMapMarker*}\hspace*{0.13cm}Turin (willing to relocate)}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:annicchiaricociro09@icloud.com}{{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}annicchiaricociro09@icloud.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+39 3452392463}{{\footnotesize\faPhone*}\hspace*{0.13cm}+39 3452392463}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://ciroanni.github.io/}{{\footnotesize\faLink}\hspace*{0.13cm}ciroanni.github.io}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/ciro-annicchiarico}{{\footnotesize\faLinkedinIn}\hspace*{0.13cm}ciro-annicchiarico}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/ciroanni}{{\footnotesize\faGithub}\hspace*{0.13cm}ciroanni}}%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.artstation.com/ciroannicchiarico}{{\footnotesize\faArtstation}\hspace*{0.13cm}ciroannicchiarico}}%
+    \end{header}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+    \section{Education}
+
+        \begin{twocolentry}{
+            Aug 2022 – April 2025
+        }
+            \textbf{Politecnico di Torino}, \textbf{Master's Degree} in Computer Engineering
+            \begin{highlights}
+                \item Computer Graphics and Multimedia
+                \item Grade: 110/110 
+            \end{highlights}
+        \end{twocolentry}
+         
+        \begin{twocolentry}{
+            July 2019 – July 2022
+        }
+            \textbf{Politecnico di Torino}, \textbf{Bachelor's Degree} in Computer Engineering
+            \begin{highlights}
+                \item Grade: 98/110 
+            \end{highlights}
+        \end{twocolentry}
+         
+     \section{Publications}
+        \begin{samepage}
+        
+             \begin{twocolentry}{
+                 March 2026
+             }
+                 \textbf{User Experience of PAL-HAND.Q, a Pneumatic Haptic Device for Finger-Level Gaming Interaction}
+
+                 \vspace{0.10 cm}
+
+                 \mbox{Fabrizio Sulpizio}, \mbox{\textbf{\textit{Ciro Annicchiarico}}}, \mbox{Giovanni Colucci}, \mbox{Simone Duretto}
+                 \vspace{0.10 cm}
+         % DA CAMBIARE
+         \href{https://www.researchgate.net/publication/402144416_User_Experience_of_PAL-HANDQ_a_Pneumatic_Haptic_Device_for_Finger-Level_Gaming_Interaction}{}
+             \end{twocolentry}
+             
+             \begin{twocolentry}{
+                 April 2025
+             }
+                 \textbf{From Words to Emotions: Evaluating Text-to-Motion Body Language for\\Believable Emotions in Virtual Humans}
+
+                 \vspace{0.10 cm}
+
+                 \mbox{Stefano Calzolari}, \mbox{\textbf{\textit{Ciro Annicchiarico}}}, \mbox{Francesco Strada}, \mbox{Andrea Bottino}
+                 \vspace{0.10 cm}
+         % DA CAMBIARE
+         \href{https://www.researchgate.net/publication/395237743_From_Words_to_Emotions_Evaluating_Text-to-Motion_Body_Language_for_Believable_Emotions_in_Virtual_Humans}{}
+             \end{twocolentry}
+
+         \end{samepage}
+
+       \section{Experience}
+
+   \begin{twocolentry}{
+
+        June 2026 – Present
+        }
+            \textbf{Luxia}, AI Engineer
+             \begin{highlights}
+                \item Development of specialised AI agents for a private-AI enterprise platform, enabling non-technical users to query internal databases, CRM and ERP systems in natural language and obtain insights, charts and reports.
+                \item Design of multi-step agentic workflows, including retrieval over private company knowledge bases, tool calling and output validation, with models served in a private, GDPR-compliant cloud.
+            \end{highlights}
+         \end{twocolentry}
+
+\vspace{0.2 cm}
+
+   \begin{twocolentry}{
+
+        June 2025 – June 2026
+        }
+            \textbf{Politecnico di Torino}, Research fellow
+            \begin{highlights}
+                \item Research fellow at the Computer Graphics and Vision Laboratory (CG\&VG Lab) of Politecnico di Torino.
+            \end{highlights}
+         \end{twocolentry}
+
+\vspace{0.2 cm}
+
+         \begin{twocolentry}{
+            Torino (TO), Italy
+
+         Oct 2023 – April 2024
+         }
+            \textbf{Istituto Amedeo Avogadro}, High school Teacher
+            \begin{highlights}
+                \item High school Teacher in Computer Science and Technology
+            \end{highlights}
+         \end{twocolentry}
+        
+
+        
+   \begin{twocolentry}{
+            Torino (TO), Italy
+
+        Jan 2023 – June 2023
+        }
+            \textbf{Istituto Amedeo Avogadro}, High school Teacher
+            \begin{highlights}
+                \item High school Teacher in Computer Science and Technology
+            \end{highlights}
+         \end{twocolentry}
+         
+    \section{Projects}
+        \begin{twocolentry}{}
+            \textbf{VR Training Simulator for Healthcare Communication} (Research Project)
+            \begin{highlights}
+                \item Developed a Virtual Reality (VR) application to train healthcare students in effective communication with nursing home patients. Engineered an interactive virtual agent using LangChain and LangGraph to manage complex, multi-functional conversational workflows. The AI agent engages users in real-time voice interactions, contextually adapts its responses, and dynamically evaluates the student's application of effective communication techniques.
+                \item Tools Used: Python, \textbf{LangChain}, \textbf{LangGraph}, LLMs, \textbf{Azure} (Speech-to-Text), Open-source TTS Models, VR, Unity, C\# 
+            \end{highlights}
+        \end{twocolentry}
+
+        \begin{twocolentry}{
+            \href{https://github.com/ciroanni/MasterThesis}{Project Link}
+        }
+            \textbf{Animating Virtual Characters Using Generative AI} (Master's Thesis)
+            \begin{highlights}
+                \item This thesis investigates AI-driven text-to-motion models as a means to generate realistic and emotionally expressive character animations from text. It provides a comparative evaluation of various models and explores emotional expressiveness through a user study. As part of the work, a custom tool was developed in Unity to integrate AI-generated animations into game engines.
+                \item Tools Used: \textbf{Unity}, Blender, C\#, Python, Anaconda 
+            \end{highlights}
+        \end{twocolentry}
+
+        \begin{twocolentry}{
+            \href{https://github.com/Project-Discount-Dive/Discount-Dive-Prototypes}{Project Link}
+            \href{https://drive.google.com/file/d/1ljSZvhK3BRsIPzGfF4kfTnJ_j8W9GXlE/view}{Trailer}
+            \href{https://docs.google.com/presentation/d/1tNtG-s0eMlzNLTMLFtCBqKuRwbw2v23Z/edit?usp=sharing&ouid=118165692359472307741&rtpof=true&sd=true}{Pitch}
+        }
+            \textbf{Discount Dive} (University Project)
+            \begin{highlights}
+                \item The project goal was to simulate the presentation of a video game prototype to a publisher. The course involved the creation of all the necessary elements, including a trailer, a pitch document and a working prototype.
+                \item \textbf{Contribution}: Programming (physics and combat system), 3D Modeling, teaser trailer animation, QA
+                \item Tools Used: \textbf{Unity}, Blender, C\# 
+            \end{highlights}
+        \end{twocolentry}
+
+        
+        \vspace{0.2 cm}
+        \begin{twocolentry}{
+            \href{https://github.com/GameAISchool2025members/AIKingdoms}{Project Link}
+        }
+            \textbf{AI Kingdom} (GameJam Project)
+            \begin{highlights}
+                \item Developed this game during an intensive 2-day game jam as part of the 7th International Summer School on AI and Games, held in Malmö. AI Kingdom is a tiny fantasy sandbox where you shape the world, one cell at a time.
+                \item \textbf{Contribution}: Programming (core gameplay logic), UI
+                \item Tools Used: \textbf{Unity}, C\#
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+        
+        \begin{twocolentry}{
+            \href{https://github.com/ciroanni/imageprocessing_project}{Project Link}
+        }
+            \textbf{AR Multiplayer App} (University Project)
+            \begin{highlights}
+                \item Developed a prototype of a real-time sharing AR application of the same working environment that allows the two users to manipulate the same objects and communicate through an interactive writing system
+                \item \textbf{Contribution}: Programming (networking), 3D Modeling
+                \item Tools Used: \textbf{Unity}, \textbf{Hololens 2}, C\#
+            \end{highlights}
+        \end{twocolentry}
+
+        \vspace{0.2 cm}
+
+        % \begin{twocolentry}{
+        %     \href{https://ciroanni.itch.io/campusafevr}{Project Link}
+        % }
+        %     \textbf{CampuSafeVR} (University Project)
+        %     \begin{highlights}
+        %         \item Developed a Virtual Reality experience that allows users to learn how to manage emergencies within a virtual university residence, preparing them for real-life scenarios
+        %         \item \textbf{Contribution}: Programming, 3D Modeling
+        %         \item Tools Used: Unity, Meta Quest, C\#
+        %     \end{highlights}
+        % \end{twocolentry}
+
+        % \vspace{0.2 cm}
+        % \begin{twocolentry}{
+        %     \href{https://github.com/ciroanni/screen-grabbing-utility}{Project Link}
+        % }
+        %     \textbf{Screen grabbing utility app} (University Project)
+        %     \begin{highlights}
+        %         \item Developed a screen-grabbing utility app capable of acquiring what is currently shown in a display, post-processing it and making it available in one or more formats. 
+        %         \item Tools Used: Rust
+        %     \end{highlights}
+        % \end{twocolentry}
+
+        
+    
+    \section{Technologies}
+
+
+
+        
+        \begin{onecolentry}
+            \textbf{Languages:} C++, C\#, C, Python, Java
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+        
+        \begin{onecolentry}
+            \textbf{Frameworks:} LangGraph/LangChain, PyTorch, TensorFlow 
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Data \& Infrastructure:} Airflow, Docker, Snowflake
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Monitoring \& Collaboration:} Datadog, Linear, Notion
+        \end{onecolentry}
+        
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Engines:} Unity, Unreal Engine
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+        
+        \begin{onecolentry}
+            \textbf{Software:}  Blender, Visual Studio, VSCode, GitHub, Office 
+        \end{onecolentry}
+
+
+    
+
+\end{document}

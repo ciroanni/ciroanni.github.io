@@ -1,0 +1,64 @@
+name: Resume freshness check
+
+on:
+  schedule:
+    - cron: '0 9 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate freshness and external links
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import pathlib
+          import re
+          import sys
+          import urllib.request
+
+          path = pathlib.Path("resume/resume.tex")
+          text = path.read_text(encoding="utf-8")
+
+          m = re.search(r"\\newcommand\{\\lastupdated\}\{(\d{4}-\d{2}-\d{2})\}", text)
+          if not m:
+            print("Missing \\lastupdated date in resume/resume.tex")
+            sys.exit(1)
+
+          updated = dt.date.fromisoformat(m.group(1))
+          age_days = (dt.date.today() - updated).days
+          if age_days > 120:
+            print(f"Resume appears stale: last updated {age_days} days ago ({updated}).")
+            sys.exit(1)
+
+          urls = re.findall(r"\\href\{(https?://[^}]+)\}", text)
+          failures = []
+          for url in urls:
+            try:
+              req = urllib.request.Request(url, method="HEAD")
+              with urllib.request.urlopen(req, timeout=15) as response:
+                if response.status >= 400:
+                  failures.append((url, response.status))
+            except Exception:
+              try:
+                with urllib.request.urlopen(url, timeout=15) as response:
+                  if getattr(response, "status", 200) >= 400:
+                    failures.append((url, getattr(response, "status", "unknown")))
+              except Exception as exc:
+                failures.append((url, str(exc)))
+
+          if failures:
+            print("Broken or unreachable links detected:")
+            for url, reason in failures:
+              print(f"- {url}: {reason}")
+            sys.exit(1)
+
+          print("Resume freshness and link checks passed.")
+          PY
