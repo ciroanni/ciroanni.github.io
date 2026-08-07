@@ -1,0 +1,38 @@
+name: Build and publish resume PDF
+
+on:
+  push:
+    paths:
+      - 'resume/resume.tex'
+      - '.github/workflows/resume-build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build PDF from LaTeX source
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume/resume.tex
+
+      - name: Copy PDF to stable website path
+        run: |
+          mkdir -p assets/docs
+          cp resume/resume.pdf assets/docs/resume.pdf
+
+      - name: Validate generated artifact
+        run: |
+          test -f assets/docs/resume.pdf
+
+      - name: Commit generated PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update generated resume PDF"
+          file_pattern: assets/docs/resume.pdf
